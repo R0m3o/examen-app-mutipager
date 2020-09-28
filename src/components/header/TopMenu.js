@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 function TopMenu() {
     return(
-        <Navbar expand="lg">
+        <Navbar expand="lg" className="offset-md-3 col-md-6">
             <Navbar.Toggle aria-controls="basic-navbar-nav"/>
 
             <Navbar.Collapse id="basic-navbar-nav">
