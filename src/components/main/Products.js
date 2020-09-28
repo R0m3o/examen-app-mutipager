@@ -1,10 +1,52 @@
-import React from 'react';
-import Accordion from 'react-bootstrap/Accordion';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
-import PlaceholderImg from '../../images/avatar-1577909_640.png';
 import { Link } from 'react-router-dom';
 
 function Products() {
+    const [products, setProducts] = useState({});
+    const [category, setCategory] = useState({});
+
+    function categoryChange(e) {
+        setCategory(e.target.value);
+        console.log(e.target.value)
+    }
+
+    useEffect(() => {
+        axios.get('http://localhost:5033/produkter')
+            .then(res => {
+                const response = res.data;
+                setProducts(response)
+            });
+    }, [])
+
+    let listOfProducts = "";
+
+    if (products.length > 0) {
+        listOfProducts = products.map(product => {
+            if (category === product.kategori.titel) {
+                return (
+                    <Card className="col-sm-12 col-md-4" key={product.id}>
+                        <Card.Body>
+                            <Card.Img variant="top" src={"http://localhost:5033/images/" + product.image} className="img-height-card"/>
+                            
+                            <Card.Text>TBD</Card.Text>
+                            
+                            <Card.Title>{product.titel}</Card.Title>
+                            
+                            <Card.Text>{product.teaser}</Card.Text>
+
+                            <Link to={'/product/' + product._id} className="col-12">SE MERE</Link>
+                        </Card.Body>
+                    </Card>
+                )
+            }
+        })
+    } else {
+        return <p>Der ingen produkter under denne kategori</p>
+    }
+
     return (
         <section id="IdProducts" className="row">
             <div className="offset-sm-0 col-sm-12 offset-md-3 col-md-6">
@@ -12,111 +54,26 @@ function Products() {
 
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos optio consectetur eum dignissimos adipisci atque molestias hic voluptatem numquam nulla corrupti, fugiat itaque quod repellat dolores error recusandae magnam culpa?</p>
 
-                <Accordion className="row" defaultActiveKey="0">
-                    <div className="col-sm-12 col-md-3 accordion-btn">
-                        <Accordion.Toggle as={Card.Header} eventKey="0">
-                            RUNDSTYKKER
-                        </Accordion.Toggle>
-
-                        <Accordion.Toggle as={Card.Header} eventKey="1">
-                            BAGUETTES
-                        </Accordion.Toggle>
-
-                        <Accordion.Toggle as={Card.Header} eventKey="2">
-                            FRANSKBRØD
-                        </Accordion.Toggle>
-
-                        <Accordion.Toggle as={Card.Header} eventKey="3">
-                            KAGER
-                        </Accordion.Toggle>
-
-                        <Accordion.Toggle as={Card.Header} eventKey="4">
-                            RUGBRØD
-                        </Accordion.Toggle>
-                    </div>
+                <div className="row">
+                    <Form className="col-sm-12 col-md-3">
+                        <Form.Control as="select" onChange={categoryChange}>
+                            <option value="Morgenbrød">MORGENBRØD</option>
+                            <option value="Baguettes">BAGUETTES</option>
+                            <option value="Franskbrød">FRANSKBRØD</option>
+                            <option value="Kager">KAGER</option>
+                            <option value="Rugbrød">RUGBRØD</option>
+                            <option value="Grovbrød">GROVBRØD</option>
+                            <option value="Boller">BOLLER</option>
+                            <option value="Madbrød">MADBRØD</option>
+                        </Form.Control>
+                    </Form>
                     
                     <div className="col-sm-12 col-md-9">
-                        <Accordion.Collapse eventKey="0" className="row">
-                            <Card className="col-sm-12 col-md-4">
-                                <Card.Body>
-                                    <Card.Img variant="top" src={PlaceholderImg} className="img-height-card"/>
-                                    
-                                    <Card.Text>TBD</Card.Text>
-                                    
-                                    <Card.Title>TBD</Card.Title>
-                                    
-                                    <Card.Text>TBD</Card.Text>
-
-                                    <Link to='/product' className="col-12">SE MERE</Link>
-                                </Card.Body>
-                            </Card>
-                        </Accordion.Collapse>
-
-                        <Accordion.Collapse eventKey="1" className="row">
-                            <Card className="col-sm-12 col-md-4">
-                                <Card.Body>
-                                    <Card.Img variant="top" src={PlaceholderImg} className="img-height-card"/>
-                                    
-                                    <Card.Text>TBD</Card.Text>
-                                    
-                                    <Card.Title>TBD</Card.Title>
-                                    
-                                    <Card.Text>TBD</Card.Text>
-
-                                    <Link to='/product' className="col-12">SE MERE</Link>
-                                </Card.Body>
-                            </Card>
-                        </Accordion.Collapse>
-                        
-                        <Accordion.Collapse eventKey="2" className="row">
-                            <Card className="col-sm-12 col-md-4">
-                                <Card.Body>
-                                    <Card.Img variant="top" src={PlaceholderImg} className="img-height-card"/>
-                                    
-                                    <Card.Text>TBD</Card.Text>
-                                    
-                                    <Card.Title>TBD</Card.Title>
-                                    
-                                    <Card.Text>TBD</Card.Text>
-
-                                    <Link to='/product' className="col-12">SE MERE</Link>
-                                </Card.Body>
-                            </Card>
-                        </Accordion.Collapse>
-
-                        <Accordion.Collapse eventKey="3" className="row">
-                            <Card className="col-sm-12 col-md-4">
-                                <Card.Body>
-                                    <Card.Img variant="top" src={PlaceholderImg} className="img-height-card"/>
-                                    
-                                    <Card.Text>TBD</Card.Text>
-                                    
-                                    <Card.Title>TBD</Card.Title>
-                                    
-                                    <Card.Text>TBD</Card.Text>
-
-                                    <Link to='/product' className="col-12">SE MERE</Link>
-                                </Card.Body>
-                            </Card>
-                        </Accordion.Collapse>
-
-                        <Accordion.Collapse eventKey="4" className="row">
-                            <Card className="col-sm-12 col-md-4">
-                                <Card.Body>
-                                    <Card.Img variant="top" src={PlaceholderImg} className="img-height-card"/>
-                                    
-                                    <Card.Text>TBD</Card.Text>
-                                    
-                                    <Card.Title>TBD</Card.Title>
-                                    
-                                    <Card.Text>TBD</Card.Text>
-
-                                    <Link to='/product' className="col-12">SE MERE</Link>
-                                </Card.Body>
-                            </Card>
-                        </Accordion.Collapse>
+                        <div className="row">
+                            {listOfProducts}
+                        </div>
                     </div>
-                </Accordion>
+                </div>
             </div>
         </section>
     )

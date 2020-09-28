@@ -10,36 +10,34 @@ function TopMenu() {
             <Navbar.Toggle aria-controls="basic-navbar-nav"/>
 
             <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="mr-auto">
-                    <Nav.Link>
-                        <Link to='/'>FORSIDE</Link>
-                    </Nav.Link>
+                <Nav>
+                    <Nav.Item>
+                        <Nav.Link>
+                            <Link to='/'>FORSIDE</Link>
+                        </Nav.Link>
+                    </Nav.Item>
 
-                    <Nav.Link>
-                        <Link to='/products'>PRODUKTER</Link>
-                    </Nav.Link>
+                    <Nav.Item>
+                        <Nav.Link>
+                            <Link to='/products'>PRODUKTER</Link>
+                        </Nav.Link>
+                    </Nav.Item>
 
-                    <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                        <NavDropdown.Item>
-                            <Link to='/card'>Card</Link>
-                        </NavDropdown.Item>
+                    <Nav.Item>
+                        <h2>bageriet</h2>
+                    </Nav.Item>
 
-                        <NavDropdown.Item>
-                            <Link to='/accordion'>Accordion</Link>
-                        </NavDropdown.Item>
+                    <Nav.Item>
+                        <Nav.Link>
+                            <Link to='/kontact'>KONTAKT</Link>
+                        </Nav.Link>
+                    </Nav.Item>
 
-                        <NavDropdown.Item>
-                            <Link to='/form'>Form</Link>
-                        </NavDropdown.Item>
-                    </NavDropdown>
-                    
-                    <Nav.Link>
-                        <Link to='/kontact'>KONTAKT</Link>
-                    </Nav.Link>
-                    
-                    <Nav.Link>
-                        <Link to='/login'>LOGIN</Link>
-                    </Nav.Link>
+                    <Nav.Item>
+                        <Nav.Link>
+                            <Link to='/login'>LOGIN</Link>
+                        </Nav.Link>
+                    </Nav.Item>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

@@ -1,12 +1,10 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import Home from './Home';
-import CardComponent from './Card';
-import AccordionComponent from './Accordion';
-import FormComponent from './Form';
 import Products from './Products';
 import Kontact from './Kontact';
 import Login from './Login';
+import Product from './Product';
 
 function Main() {
     return(
@@ -15,9 +13,7 @@ function Main() {
             <Route exact path='/products' component={Products}/>
             <Route exact path='/kontact' component={Kontact}/>
             <Route exact path='/login' component={Login}/>
-            <Route exact path='/card' component={CardComponent}/>
-            <Route exact path='/accordion' component={AccordionComponent}/>
-            <Route exact path='/form' component={FormComponent}/>
+            <Route exact path='/product/:id' component={Product}/>
         </main>
     )
 }

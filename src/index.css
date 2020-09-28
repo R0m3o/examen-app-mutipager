@@ -19,8 +19,8 @@
   --left-txt: left;
   --img-width-auto: auto;
   --txt-small: 11px;
-  --section-padding-top: 40px;
-  --section-padding-bottom: 60px;
+  --section-padding-top: 50px;
+  --section-padding-bottom: 70px;
 }
 
 .margin-card{
@@ -37,8 +37,12 @@ header{
   background-color: var(--bg-color-blue);
 }
 
-header nav div{
+header nav div div{
   margin: var(--center-object);
+}
+
+header nav div h2{
+  color: var(--txt-color-white);
 }
 
 header a{
@@ -48,6 +52,35 @@ header a{
 header a:hover{
   color: var(--txt-color-lightest-gray);
   text-decoration: var(--txt-decoration-none);
+}
+
+/* LOGIN */
+
+#IdLogin{
+  text-align: var(--right-txt);
+  padding-top: var(--section-padding-top);
+  padding-bottom: var(--section-padding-bottom);
+}
+
+#IdLogin button{
+  color: var(--txt-color-black);
+  outline: var(--outline-black);
+}
+
+/* CAROUSEL */
+
+#IdCarousel{
+  position: relative;
+}
+
+#IdCarousel p{
+  position: absolute;
+  top: 45%;
+  width: 100%;
+  text-align: var(--center-txt);
+  color: var(--txt-color-white);
+  z-index: 10;
+  font-size: 50px;
 }
 
 /* WE CREATE */
@@ -72,6 +105,8 @@ header a:hover{
 #IdNewsLetter{
   padding-top: var(--section-padding-top);
   padding-bottom: var(--section-padding-bottom);
+  background-image: url(./images/newsletterbg.jpg);
+  background-repeat: no-repeat;
 }
 
 #IdNewsLetter h4{
@@ -81,6 +116,8 @@ header a:hover{
 #IdNewsLetter button{
   border-radius: var(--border-radius-none);
   background-color: var(--bg-color-dark-blue);
+  background-position: center;
+
 }
 
 /* MOST RECENT */
@@ -124,6 +161,7 @@ header a:hover{
 
 #IdProducts .accordion-btn{
   text-align: var(--right-txt);
+  width: 100%;
 }
 
 #IdProducts a{
@@ -136,6 +174,18 @@ header a:hover{
   outline: var(--outline-light-gray);
   text-decoration: var(--txt-decoration-none);
 }
+
+/* THE PRODUCT */
+
+#IdTheProduct{
+  padding-top: var(--section-padding-top);
+  padding-bottom: var(--section-padding-bottom);
+}
+
+#IdTheProduct img{
+  width: var(--img-width-auto);
+}
+
 
 /* KONTACT */
 
