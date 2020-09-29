@@ -11,7 +11,7 @@ function TopMenu() {
 
     if (loggedIn) {
         logInLogout = (
-            <Link to='/logout'>LOG UD</Link>
+            <Link to={'/my-profile'}>MIN PROFIL</Link>
         )
     } else {
         logInLogout = (

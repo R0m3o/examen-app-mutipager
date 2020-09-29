@@ -35,7 +35,7 @@ function Products() {
                             
                             <Card.Title>{product.titel}</Card.Title>
                             
-                            <Card.Text>{product.teaser}</Card.Text>
+                            <Card.Text className="product-txt-overflow">{product.teaser}</Card.Text>
 
                             <Link to={'/product/' + product._id} className="col-12">SE MERE</Link>
                         </Card.Body>

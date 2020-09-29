@@ -1,10 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Card from 'react-bootstrap/Card';
-import article from '../../images/article.jpg';
-import article2 from '../../images/article2.jpg';
-import article3 from '../../images/article3.jpg';
 
 function WeCreate() {
+    const [news, setNews] = useState({});
+
+    useEffect(() => {
+        axios.get('http://localhost:5033/nyheder/antal/3')
+            .then(res => {
+                const response = res.data;
+                setNews(response)
+            });
+    }, [])
+
+    let listOfNews = "";
+
+    if (news.length > 0) {
+        listOfNews = news.map(theNews => {
+            return (
+                <Card className="col-md-4 col-sm-12" key={theNews.id}>
+                    <Card.Body>
+                        <Card.Img variant="top" src={'http://localhost:5033/images/' + theNews.image} className="img-height-card"/>
+                        
+                        <Card.Title>{theNews.titel}</Card.Title>
+                        
+                        <Card.Text>{theNews.teaser}</Card.Text>
+                    </Card.Body>
+                </Card>
+            )
+        })
+    }
+
     return (
         <section id="IdWeCreate">
             <div className="row">
@@ -14,35 +40,7 @@ function WeCreate() {
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea sint enim facilis voluptate! Voluptatum, explicabo a voluptatem deserunt dignissimos aspernatur, laboriosam esse dolor debitis distinctio architecto assumenda commodi, qui dicta?</p>
 
                     <div className="row">
-                        <Card className="col-md-4 col-sm-12">
-                            <Card.Body>
-                                <Card.Img variant="top" src={article} className="img-height-card"/>
-                                
-                                <Card.Title>KREATIVITET DYRKES</Card.Title>
-                                
-                                <Card.Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam quo iusto quidem sunt ex, eveniet minima et nobis. Fugit repellat adipisci dicta corrupti dolor laboriosam illo saepe quibusdam ab aperiam!</Card.Text>
-                            </Card.Body>
-                        </Card>
-
-                        <Card className="col-md-4 col-sm-12">
-                            <Card.Body>
-                                <Card.Img variant="top" src={article2} className="img-height-card"/>
-                                
-                                <Card.Title>VI ELSKER BRØD</Card.Title>
-                                
-                                <Card.Text>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo provident reiciendis optio saepe aliquam voluptas tempora esse ullam a. Facere eum animi sequi quam tempora numquam laborum mollitia repellat delectus!</Card.Text>
-                            </Card.Body>
-                        </Card>
-
-                        <Card className="col-md-4 col-sm-12">
-                            <Card.Body>
-                                <Card.Img variant="top" src={article3} className="img-height-card"/>
-                                
-                                <Card.Title>SANS FOR DETALJER</Card.Title>
-                                
-                                <Card.Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, nemo! Labore, reiciendis. Amet atque tempore iste eum molestias voluptatibus illum quod. Illum iusto quos veniam facere, error cupiditate maxime voluptatibus.</Card.Text>
-                            </Card.Body>
-                        </Card>
+                        {listOfNews}
                     </div>
                 </div>
             </div>

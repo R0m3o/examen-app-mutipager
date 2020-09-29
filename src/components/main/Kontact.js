@@ -1,8 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 function Kontact() {
+    const [message, setMessage] = useState({});
+    const history = useHistory();
+
+    const sendMessage = e => {
+        e.preventDefault();
+
+        axios.post('http://localhost:5033/kontakt', message)
+            .then(res => {
+                console.log(res.data);
+                history.push('/');
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
     return (
         <section id="IdKontact">
             <div className="row">
@@ -13,21 +31,21 @@ function Kontact() {
 
                     <div className="row">
                         <div className="col-sm-12 col-md-6">
-                            <Form>
+                            <Form onSubmit={sendMessage}>
+                                <Form.Group controlId="formBasicText">
+                                    <Form.Control onChange={(e) => setMessage({ ...message, navn: e.target.value })} type="text" placeholder="Navn"/>
+                                </Form.Group>
+
                                 <Form.Group controlId="formBasicEmail">
-                                    <Form.Control type="email" placeholder="Email"/>
+                                    <Form.Control onChange={(e) => setMessage({ ...message, email: e.target.value })} type="email" placeholder="Email"/>
                                 </Form.Group>
 
                                 <Form.Group controlId="formBasicText">
-                                    <Form.Control type="text" placeholder="Emne"/>
-                                </Form.Group>
-
-                                <Form.Group controlId="formBasicPassword">
-                                    <Form.Control type="password" placeholder="Password"/>
+                                    <Form.Control onChange={(e) => setMessage({ ...message, emne: e.target.value })} type="text" placeholder="Emne"/>
                                 </Form.Group>
 
                                 <Form.Group controlId="exampleForm.ControlTextarea1">
-                                    <Form.Control as="textarea" rows="3"/>
+                                    <Form.Control onChange={(e) => setMessage({ ...message, besked: e.target.value })} as="textarea" rows="3"/>
                                 </Form.Group>
 
                                 <Button variant="primary" type="submit">SEND</Button>

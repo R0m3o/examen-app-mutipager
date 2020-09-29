@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import axios from 'axios';
 import { LoginContext } from './LoginContext';
 import Form from 'react-bootstrap/Form';
@@ -18,7 +18,7 @@ function Login() {
         axios.post('http://localhost:5033/login/login', logindata)
             .then(res => {
                 console.log(res.data);
-                onLogin();
+                onLogin(logindata);
                 history.push('/');
             })
             .catch((err) => {
@@ -30,27 +30,38 @@ function Login() {
         <section id="IdLogin">
             <div className="row">
                 <div className="offset-sm-0 col-sm-12 offset-md-3 col-md-6">
-                    <Form onSubmit={userLoggingIn}>
-                        <InputGroup className="mb-3">
-                            <InputGroup.Prepend>
-                                <InputGroup.Text id="email-symbol">&#9993;</InputGroup.Text>
-                            </InputGroup.Prepend>
+                    <div className="row">
+                        <div className="col-sm-12 col-md-9">
+                            <h4>Log ind</h4>
+                            <Form onSubmit={userLoggingIn}>
+                                <InputGroup className="mb-3">
+                                    <InputGroup.Prepend>
+                                        <InputGroup.Text id="email-symbol">&#9993;</InputGroup.Text>
+                                    </InputGroup.Prepend>
 
-                            <FormControl onChange={(e) => setLogindata({...logindata, email: e.target.value })} type="email" placeholder="email" aria-label="email" aria-describedby="email-symbol"/>
-                        </InputGroup>
+                                    <FormControl onChange={(e) => setLogindata({...logindata, email: e.target.value })} type="email" placeholder="email" aria-label="email" aria-describedby="email-symbol"/>
+                                </InputGroup>
 
-                        <InputGroup className="mb-3">
-                            <InputGroup.Prepend>
-                                <InputGroup.Text id="key-symbol">&#9919;</InputGroup.Text>
-                            </InputGroup.Prepend>
+                                <InputGroup className="mb-3">
+                                    <InputGroup.Prepend>
+                                        <InputGroup.Text id="key-symbol">&#9919;</InputGroup.Text>
+                                    </InputGroup.Prepend>
 
-                            <FormControl onChange={(e) => setLogindata({...logindata, password: e.target.value })} type="password" placeholder="password" aria-label="password" aria-describedby="key-symbol"/>
-                        </InputGroup>
+                                    <FormControl onChange={(e) => setLogindata({...logindata, password: e.target.value })} type="password" placeholder="password" aria-label="password" aria-describedby="key-symbol"/>
+                                </InputGroup>
 
-                        <Button variant="outline-success" type="submit">LOG IND</Button>
+                                <Button variant="outline-success" type="submit">LOG IND</Button>
 
-                        <Button onClick={() => { history.push('/')}} variant="outline-danger" type="button">FORTRYD</Button>
-                    </Form>
+                                <Button onClick={() => { history.push('/')}} variant="outline-danger" type="button">FORTRYD</Button>
+                            </Form>
+                        </div>
+                        
+                        <div className="col-sm-12 col-md-3">
+                            <p><b>Er du ny her?</b></p>
+
+                            <Link to='/sign-up'>OPREDT BRUGER</Link>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
