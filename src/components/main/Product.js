@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from 'react-bootstrap/Card';
+import parse from 'html-react-parser';
 import Comment from './Comment';
 
 function Product(props) {
@@ -9,6 +10,14 @@ function Product(props) {
 
     useEffect(() => {
         axios.get('http://localhost:5033/produkter/' + props.match.params.id)
+            .then(res => {
+                const response = res.data;
+                setProduct(response)
+            })
+    }, [])
+
+    useEffect(() => {
+        axios.get('http://localhost:5033/produkter/' + props.match.params.id + '/ingredienser')
             .then(res => {
                 const response = res.data;
                 setProduct(response)
@@ -33,7 +42,7 @@ function Product(props) {
 
                             <Card.Img src={"http://localhost:5033/images/" + product.image} className="img-height-card" alt={product.titel}/>
                             
-                            <Card.Text>{product.beskrivelse}</Card.Text>
+                            <Card.Text>{parse(product.beskrivelse)}</Card.Text>
                         </div>
 
                         <div className="col-sm-12 col-md-3">
@@ -47,8 +56,10 @@ function Product(props) {
     }
 
     return (
-        <section id="IdTheProduct" className="row">
-            {theProduct}
+        <section id="IdTheProduct">
+            <div className="row">
+                {theProduct}
+            </div>
         </section>
     )
 }

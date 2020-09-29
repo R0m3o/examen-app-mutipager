@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { LoginContext } from '../auth/LoginContext';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import { Link } from 'react-router-dom';
 
 function TopMenu() {
+    const { loggedIn } = useContext(LoginContext);
+
+    let logInLogout;
+
+    if (loggedIn) {
+        logInLogout = (
+            <Link to='/logout'>LOG UD</Link>
+        )
+    } else {
+        logInLogout = (
+            <Link to='/login'>LOGIN</Link>
+        )
+    }
+
     return(
         <Navbar expand="lg" className="offset-md-3 col-md-6">
             <Navbar.Toggle aria-controls="basic-navbar-nav"/>
@@ -35,7 +49,7 @@ function TopMenu() {
 
                     <Nav.Item>
                         <Nav.Link>
-                            <Link to='/login'>LOGIN</Link>
+                            {logInLogout}
                         </Nav.Link>
                     </Nav.Item>
                 </Nav>

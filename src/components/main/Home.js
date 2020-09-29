@@ -6,12 +6,12 @@ import WeCreate from './WeCreate';
 
 function Home() {
     return (
-        <section>
+        <div>
             <CarouselComponent/>
             <WeCreate/>
             <NewsLetter/>
             <MostRecent/>
-        </section>
+        </div>
     )
 }
 

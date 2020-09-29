@@ -48,29 +48,31 @@ function Products() {
     }
 
     return (
-        <section id="IdProducts" className="row">
-            <div className="offset-sm-0 col-sm-12 offset-md-3 col-md-6">
-                <h4>Vores elskede bagværk</h4>
+        <section id="IdProducts">
+            <div className="row">
+                <div className="offset-sm-0 col-sm-12 offset-md-3 col-md-6">
+                    <h4>Vores elskede bagværk</h4>
 
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos optio consectetur eum dignissimos adipisci atque molestias hic voluptatem numquam nulla corrupti, fugiat itaque quod repellat dolores error recusandae magnam culpa?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos optio consectetur eum dignissimos adipisci atque molestias hic voluptatem numquam nulla corrupti, fugiat itaque quod repellat dolores error recusandae magnam culpa?</p>
 
-                <div className="row">
-                    <Form className="col-sm-12 col-md-3">
-                        <Form.Control as="select" onChange={categoryChange}>
-                            <option value="Morgenbrød">MORGENBRØD</option>
-                            <option value="Baguettes">BAGUETTES</option>
-                            <option value="Franskbrød">FRANSKBRØD</option>
-                            <option value="Kager">KAGER</option>
-                            <option value="Rugbrød">RUGBRØD</option>
-                            <option value="Grovbrød">GROVBRØD</option>
-                            <option value="Boller">BOLLER</option>
-                            <option value="Madbrød">MADBRØD</option>
-                        </Form.Control>
-                    </Form>
-                    
-                    <div className="col-sm-12 col-md-9">
-                        <div className="row">
-                            {listOfProducts}
+                    <div className="row">
+                        <Form className="col-sm-12 col-md-3">
+                            <Form.Control as="select" onChange={categoryChange}>
+                                <option value="Morgenbrød">MORGENBRØD</option>
+                                <option value="Baguettes">BAGUETTES</option>
+                                <option value="Franskbrød">FRANSKBRØD</option>
+                                <option value="Kager">KAGER</option>
+                                <option value="Rugbrød">RUGBRØD</option>
+                                <option value="Grovbrød">GROVBRØD</option>
+                                <option value="Boller">BOLLER</option>
+                                <option value="Madbrød">MADBRØD</option>
+                            </Form.Control>
+                        </Form>
+                        
+                        <div className="col-sm-12 col-md-9">
+                            <div className="row">
+                                {listOfProducts}
+                            </div>
                         </div>
                     </div>
                 </div>
