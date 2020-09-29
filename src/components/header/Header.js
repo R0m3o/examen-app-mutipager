@@ -3,7 +3,7 @@ import TopMenu from './TopMenu'
 
 function Header() {
     return(
-        <header>
+        <header id="IdTopOfPage">
             <TopMenu/>
         </header>
     )

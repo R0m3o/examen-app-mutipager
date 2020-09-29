@@ -1,9 +1,13 @@
 :root{
+  --bg-color-lightest-gray: #CCCCCC;
+  --bg-color-light-gray: #898989;
   --bg-color-dark-gray: #333333;
   --bg-color-darkest-gray: #252525;
   --bg-color-dark-blue: #617685;
   --bg-color-blue: #6C8EA9;
   --txt-color-black: #000000;
+  --txt-color-darkest-gray: #252525;
+  --txt-color-dark-gray: #333333;
   --txt-color-light-gray: #898989;
   --txt-color-lightest-gray: #CCCCCC;
   --txt-color-white: #FFFFFF;
@@ -26,7 +30,7 @@
 }
 
 .card-body{
-  padding: 10px 5px;
+  padding: 10px 0px;
 }
 
 .margin-card{
@@ -284,6 +288,21 @@ header a:hover{
 /* FOOTER */
 footer{
   text-align: var(--center-txt);
+  position: relative;
+}
+
+#IdToTopBtn{
+  background-color: var(--bg-color-lightest-gray);
+  color: var(--txt-color-darkest-gray);
+  padding: 6px 12px;
+  border-radius: 55px;
+  font-size: 20px;
+}
+
+#IdToTopBtn:hover{
+  text-decoration: var(--txt-decoration-none);
+  background-color: var(--bg-color-darkest-gray);
+  color: var(--txt-color-lightest-gray);
 }
 
 footer h4{

@@ -21,8 +21,8 @@ function Product(props) {
     if (product !== undefined) { 
         listOfIngrediense = product.ingredienser.map(ingrediens => {
             return (
-                <div className="col-sm-12 col-md-5">
-                    <Card key={ingrediens.id}>
+                <div className="row">
+                    <Card key={ingrediens.id} className="col-12">
                         <Card.Body>
                             <Card.Text>
                                 {ingrediens.maengde}{ingrediens.enhed_forkortet} {ingrediens.ingrediens_titel}
@@ -34,25 +34,29 @@ function Product(props) {
         })
 
         theProduct = (
-            <div className="offset-sm-0 col-sm-12 offset-md-3 col-md-6">
+            <div>
                 <Card.Header>
                     <p>Product &#8250; {product.kategori.titel}</p>
                 </Card.Header>
 
                 <div className="row">
-                    <Card className="col-sm-12 col-md-7">
-                        <Card.Body>
-                            <Card.Title>{product.titel}</Card.Title>
+                    <div className="col-sm-12 col-md-7">
+                        <Card>
+                            <Card.Body>
+                                <Card.Title>{product.titel}</Card.Title>
 
-                            <Card.Text>{product.kategori.titel}</Card.Text>
+                                <Card.Text>{product.kategori.titel}</Card.Text>
 
-                            <Card.Img src={"http://localhost:5033/images/" + product.image} className="img-height-card" alt={product.titel}/>
-                            
-                            <Card.Text>{parse(product.beskrivelse)}</Card.Text>
-                        </Card.Body>
-                    </Card>
+                                <Card.Img src={"http://localhost:5033/images/" + product.image} className="img-height-card" alt={product.titel}/>
+                                
+                                <Card.Text>{parse(product.beskrivelse)}</Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </div>
 
-                    {listOfIngrediense}
+                    <div className="col-sm-12 col-md-5">
+                        {listOfIngrediense}
+                    </div>
                 </div>
             </div>
         )
@@ -61,8 +65,9 @@ function Product(props) {
     return (
         <section id="IdTheProduct">
             <div className="row">
-                {theProduct}
-
+                <div className="offset-sm-0 col-sm-12 offset-md-3 col-md-6">
+                    {theProduct}
+                </div>
             </div>
         </section>
     )
