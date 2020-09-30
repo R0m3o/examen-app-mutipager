@@ -11,6 +11,7 @@ function NewsLetter() {
 
     const createNewSub = e => {
         e.preventDefault();
+        console.log(document.cookie)
 
         axios.post('http://localhost:5033/nyhedsbrevtilmelding', newssub)
             .then(res => {

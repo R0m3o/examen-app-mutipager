@@ -32,7 +32,7 @@ function Product(props) {
     const submitComment = e => {
         e.preventDefault();
 
-        axios.post('http://localhost:5033/kommentar/admin', comment, {withCredentials: true}, props.match.params.id)
+        axios.post('http://localhost:5033/kommentar/admin', comment, document.cookie.userID, props.match.params.id)
             .then(res => {
                 console.log(res.data);
             })
