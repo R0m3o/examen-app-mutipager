@@ -19,7 +19,6 @@ function Product(props) {
                 setProduct(response);
             })
     }, [])
-
     
     const likeProduct = e => {
         e.preventDefault()
@@ -32,7 +31,7 @@ function Product(props) {
     const submitComment = e => {
         e.preventDefault();
 
-        axios.post('http://localhost:5033/kommentar/admin', comment, document.cookie.userID, props.match.params.id)
+        axios.post('http://localhost:5033/kommentar/admin', comment, product, {withCredentials: true})
             .then(res => {
                 console.log(res.data);
             })
@@ -110,6 +109,7 @@ function Product(props) {
                                     <InputGroup.Text id="write-symbol">&#9998;</InputGroup.Text>
                                 </InputGroup.Prepend>
 
+                                <FormControl onChange={(e) => setComment({ ...comment, titel: e.target.value })} placeholder="kommentar-titel" aria-label="comment-titel" aria-describedby="write-symbol" type="text"/>
                                 <FormControl onChange={(e) => setComment({ ...comment, kommentaren: e.target.value })} placeholder="kommentar" aria-label="comment" aria-describedby="write-symbol" type="text"/>
 
                                 <Button variant="primary" type="submit">Indsæt</Button>

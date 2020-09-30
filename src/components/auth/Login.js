@@ -17,11 +17,9 @@ function Login() {
 
         axios.post('http://localhost:5033/login/login', logindata)
             .then(res => {
-                var d = new Date();
-                /* d.setTime(d.getTime() + (3*60*60*1000)); */
+                const d = new Date();
                 d.setTime(d.getTime() + (3*60*60*1000));
-                var expires = "expires=" + d.toUTCString();
-                /*  document.cookie = ("userID=" + res.data.bruger_id + "; " + expires) */
+                const expires = "expires=" + d.toUTCString();
                 document.cookie = (res.data.bruger_id + "; " + expires)
                 console.log(res.data);
                 onLogin(logindata);

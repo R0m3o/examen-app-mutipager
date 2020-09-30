@@ -8,11 +8,10 @@ import Button from 'react-bootstrap/Button';
 function NewsLetter() {
     const [newssub, setNewssub] = useState({});
     const [substatus, setSubstatus] = useState();
+    const x = document.cookie
 
     const createNewSub = e => {
         e.preventDefault();
-        console.log(document.cookie)
-
         axios.post('http://localhost:5033/nyhedsbrevtilmelding', newssub)
             .then(res => {
                 console.log(res.data);
@@ -20,6 +19,8 @@ function NewsLetter() {
             .catch((err) => {
                 console.log(err);
             })
+
+            
         
         setSubstatus(true)
     }
@@ -28,7 +29,10 @@ function NewsLetter() {
 
     if (substatus) {
         subOrNot = (
-            <h4>Tak! Du er nu tilmeldt vores nyhedsbrev</h4>
+            <div>
+                <h4>Tak! Du er nu tilmeldt vores nyhedsbrev</h4>
+                <p>{x}</p>
+            </div>
         )
     } else {
         subOrNot = (

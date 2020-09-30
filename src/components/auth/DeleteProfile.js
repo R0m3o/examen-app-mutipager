@@ -3,14 +3,14 @@ import Button from 'react-bootstrap/Button';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
-function DeleteProfile(props) {
+function DeleteProfile() {
     const [profile, setProfile] = useState({});
     const history = useHistory();
 
     useEffect(() => {
         (async () => {
             try {
-                let res = await axios.get('http://localhost:5033/bruger/admin/' + props.match.params.id);
+                let res = await axios.get('http://localhost:5033/bruger/admin/' + document.cookie);
                 setProfile(await res.data);
             } catch (err) {
                 console.log(err)
@@ -19,7 +19,7 @@ function DeleteProfile(props) {
     }, [])
 
     const deleteProfile = e => {
-        axios.delete('http://localhost:5033/bruger/admin/' + props.match.params.id)
+        axios.delete('http://localhost:5033/bruger/admin/' + document.cookie)
             .then(res => {
                 console.log(res.data);
                 history.push('/');
@@ -39,11 +39,9 @@ function DeleteProfile(props) {
 
                     <p>{profile.email}</p>
                     
-                    <p>{profile.password}</p>
-                    
                     <Button onClick={() => { history.push('/')}} variant="outline-success">FORTRYD</Button>
                     
-                    <Button variant="outline-danger">SLET PROFIL</Button>
+                    <Button onClick={deleteProfile} variant="outline-danger">SLET PROFIL</Button>
                 </div>
             </div>
         </section>
