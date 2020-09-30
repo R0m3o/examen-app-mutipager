@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 
 function NewsLetter() {
     const [newssub, setNewssub] = useState({});
+    const [substatus, setSubstatus] = useState();
 
     const createNewSub = e => {
         e.preventDefault();
@@ -18,27 +19,42 @@ function NewsLetter() {
             .catch((err) => {
                 console.log(err);
             })
+        
+        setSubstatus(true)
+    }
+
+    let subOrNot;
+
+    if (substatus) {
+        subOrNot = (
+            <h4>Tak! Du er nu tilmeldt vores nyhedsbrev</h4>
+        )
+    } else {
+        subOrNot = (
+            <Form onSubmit={createNewSub}>
+            <h4>Tilmeld dig vores nyhedsbrev</h4>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis hic voluptate a animi dicta excepturi aspernatur, repellendus quae earum ipsum ipsa optio vero architecto placeat, facilis nihil nulla! Eum, inventore.</p>
+
+                <InputGroup className="mb-3">
+                    <InputGroup.Prepend>
+                        <InputGroup.Text id="email-symbol">&#9993;</InputGroup.Text>
+                    </InputGroup.Prepend>
+
+                    <FormControl onChange={(e) => setNewssub({ ...newssub, email: e.target.value })} placeholder="email" aria-label="email" aria-describedby="email-symbol" type="email"/>
+
+                    <Button variant="primary" type="submit">TILMELD</Button>
+                </InputGroup>
+            </Form>
+        )
     }
 
     return (
         <section id="IdNewsLetter">
             <div className="row">
                 <div className="offset-sm-0 col-sm-12 offset-md-3 col-md-6">
-                    <h4>Tilmeld dig vores nyhedsbrev</h4>
-
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis hic voluptate a animi dicta excepturi aspernatur, repellendus quae earum ipsum ipsa optio vero architecto placeat, facilis nihil nulla! Eum, inventore.</p>
-
-                    <Form onSubmit={createNewSub}>
-                        <InputGroup className="mb-3">
-                            <InputGroup.Prepend>
-                                <InputGroup.Text id="email-symbol">&#9993;</InputGroup.Text>
-                            </InputGroup.Prepend>
-
-                            <FormControl onChange={(e) => setNewssub({ ...newssub, email: e.target.value })} placeholder="email" aria-label="email" aria-describedby="email-symbol" type="email"/>
-
-                            <Button variant="primary" type="submit">TILMELD</Button>
-                        </InputGroup>
-                    </Form>
+                   
+                    {subOrNot}
                 </div>
             </div>
         </section>

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import parse from 'html-react-parser';
 import Card from 'react-bootstrap/Card';
-import PlaceholderImg from '../../images/avatar-1577909_640.png';
 import { Link } from 'react-router-dom';
 
 function MostRecent() {
@@ -24,6 +23,8 @@ function MostRecent() {
                 <Card className="col-md-3 col-sm-12" key={product.id}>
                     <Card.Body>
                         <Card.Img variant="top" src={'http://localhost:5033/images/' + product.image} className="img-height-card"/>
+                        
+                        <Card.Text>{product.kommentar.length} &#128172;</Card.Text>
                         
                         <Card.Title>{product.titel}</Card.Title>
                         

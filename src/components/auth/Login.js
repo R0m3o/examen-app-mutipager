@@ -17,6 +17,7 @@ function Login() {
 
         axios.post('http://localhost:5033/login/login', logindata)
             .then(res => {
+                document.cookie = (res.data.bruger_id)
                 console.log(res.data);
                 onLogin(logindata);
                 history.push('/');

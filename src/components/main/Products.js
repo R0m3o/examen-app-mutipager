@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 function Products() {
     const [products, setProducts] = useState({});
-    const [category, setCategory] = useState({});
+    const [category, setCategory] = useState("All");
 
     function categoryChange(e) {
         setCategory(e.target.value);
@@ -31,7 +31,23 @@ function Products() {
                         <Card.Body>
                             <Card.Img variant="top" src={"http://localhost:5033/images/" + product.image} className="img-height-card"/>
                             
-                            <Card.Text>TBD</Card.Text>
+                            <Card.Text>{product.kommentar.length} &#128172; {product.likes} &#9825;</Card.Text>
+                            
+                            <Card.Title>{product.titel}</Card.Title>
+                            
+                            <Card.Text className="product-txt-overflow">{product.teaser}</Card.Text>
+
+                            <Link to={'/product/' + product._id} className="col-12">SE MERE</Link>
+                        </Card.Body>
+                    </Card>
+                )
+            } else if (category === "All") {
+                return (
+                    <Card className="col-sm-12 col-md-4" key={product.id}>
+                        <Card.Body>
+                            <Card.Img variant="top" src={"http://localhost:5033/images/" + product.image} className="img-height-card"/>
+                            
+                            <Card.Text>{product.kommentar.length} &#128172; {product.likes} &#9825;</Card.Text>
                             
                             <Card.Title>{product.titel}</Card.Title>
                             
@@ -58,6 +74,7 @@ function Products() {
                     <div className="row">
                         <Form className="col-sm-12 col-md-3">
                             <Form.Control as="select" onChange={categoryChange}>
+                                <option value="All">ALT BAGVÆRK</option>
                                 <option value="Morgenbrød">MORGENBRØD</option>
                                 <option value="Baguettes">BAGUETTES</option>
                                 <option value="Franskbrød">FRANSKBRØD</option>
