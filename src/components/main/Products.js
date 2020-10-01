@@ -22,10 +22,12 @@ function Products() {
     }, [])
 
     let listOfProducts = "";
+    let areThereProducts = "";
 
     if (products.length > 0) {
         listOfProducts = products.map(product => {
             if (category === product.kategori.titel) {
+                areThereProducts = <p>Nyd vores opskrifter</p>
                 return (
                     <Card className="col-sm-12 col-md-4" key={product.id}>
                         <Card.Body>
@@ -42,6 +44,7 @@ function Products() {
                     </Card>
                 )
             } else if (category === "All") {
+                areThereProducts = <p>Nyd vores opskrifter</p>
                 return (
                     <Card className="col-sm-12 col-md-4" key={product.id}>
                         <Card.Body>
@@ -57,10 +60,12 @@ function Products() {
                         </Card.Body>
                     </Card>
                 )
+            } else {
+                areThereProducts = <p>Der er desværre ingen opskrifter under denne kategori</p>
             }
         })
     } else {
-        return <p>Der ingen produkter under denne kategori</p>
+        areThereProducts = <p>Der er desværre ingen opskrifter under denne kategori</p>
     }
 
     return (
@@ -87,6 +92,7 @@ function Products() {
                         </Form>
                         
                         <div className="col-sm-12 col-md-9">
+                            {areThereProducts}
                             <div className="row">
                                 {listOfProducts}
                             </div>

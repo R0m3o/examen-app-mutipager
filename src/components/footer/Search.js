@@ -19,7 +19,7 @@ function Search() {
             <Form onSubmit={wordSearched} className="col-sm-7 col-md-3">
                 <InputGroup className="mb-3">
                     <InputGroup.Prepend>
-                        <InputGroup.Text id="basic-search"><span>&#128269;</span></InputGroup.Text> 
+                        <InputGroup.Text id="basic-search"><span role="img" aria-label="search-icon">&#128269;</span></InputGroup.Text> 
                     </InputGroup.Prepend>
 
                     <FormControl onChange={(e) => setSearchword(e.target.value)} placeholder="..." aria-label="search" aria-describedby="basic-search"/>

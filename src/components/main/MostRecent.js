@@ -24,7 +24,7 @@ function MostRecent() {
                     <Card.Body>
                         <Card.Img variant="top" src={'http://localhost:5033/images/' + product.image} className="img-height-card"/>
                         
-                        <Card.Text>{product.kommentar.length} <span>&#128172;</span></Card.Text>
+                        <Card.Text>{product.kommentar.length} <span role="img" aria-label="comments-icon">&#128172;</span></Card.Text>
                         
                         <Card.Title>{product.titel}</Card.Title>
                         

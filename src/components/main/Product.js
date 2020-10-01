@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import qs from 'qs';
+import dayjs from 'dayjs';
 import axios from 'axios';
 import parse from 'html-react-parser';
 import Card from 'react-bootstrap/Card';
@@ -9,8 +11,15 @@ import Button from 'react-bootstrap/Button';
 
 function Product(props) {
     const [product, setProduct] = useState();
-    const [comment, setComment] = useState();
     const [liked, setLiked] = useState();
+    const [commenttitle, setCommenttitle] = useState();
+    const [commenttext, setCommenttext] = useState();
+    const data = qs.stringify({
+        'titel' : commenttitle,
+        'kommentaren' : commenttext,
+        'bruger' : document.cookie,
+        'produkt' : props.match.params.id
+    })
 
     useEffect(() => {
         axios.get('http://localhost:5033/produkter/' + props.match.params.id)
@@ -31,12 +40,12 @@ function Product(props) {
     const submitComment = e => {
         e.preventDefault();
 
-        axios.post('http://localhost:5033/kommentar/admin', comment, product, {withCredentials: true})
+        axios.post('http://localhost:5033/kommentar/admin', data)
             .then(res => {
                 console.log(res.data);
             })
             .catch((err) => {
-                console.log(err);
+                console.log(err.message);
             })
     }
 
@@ -71,7 +80,8 @@ function Product(props) {
                 <Card key={comment.id}>
                     <Card.Body>
                         <Card.Title>{comment.bruger.fornavn} {comment.bruger.efternavn}</Card.Title>
-                        <Card.Text>{comment.oprettet}</Card.Text>
+                        <Card.Text>{dayjs(comment.oprettet).format("DD MMMM, kl. HH:mm YYYY")}</Card.Text>
+                        <Card.Text>{comment.titel}</Card.Text>
                         <Card.Text>{comment.kommentaren}</Card.Text>
                     </Card.Body>
                 </Card>
@@ -109,8 +119,9 @@ function Product(props) {
                                     <InputGroup.Text id="write-symbol">&#9998;</InputGroup.Text>
                                 </InputGroup.Prepend>
 
-                                <FormControl onChange={(e) => setComment({ ...comment, titel: e.target.value })} placeholder="kommentar-titel" aria-label="comment-titel" aria-describedby="write-symbol" type="text"/>
-                                <FormControl onChange={(e) => setComment({ ...comment, kommentaren: e.target.value })} placeholder="kommentar" aria-label="comment" aria-describedby="write-symbol" type="text"/>
+                                <FormControl onChange={(e) => setCommenttitle(e.target.value)} placeholder="kommentar-titel" aria-label="comment-titel" aria-describedby="write-symbol" type="text"/>
+                                
+                                <FormControl onChange={(e) => setCommenttext(e.target.value)} placeholder="kommentar" aria-label="comment" aria-describedby="write-symbol" type="text"/>
 
                                 <Button variant="primary" type="submit">Indsæt</Button>
                             </InputGroup>
