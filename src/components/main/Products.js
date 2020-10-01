@@ -31,7 +31,7 @@ function Products() {
                         <Card.Body>
                             <Card.Img variant="top" src={"http://localhost:5033/images/" + product.image} className="img-height-card"/>
                             
-                            <Card.Text>{product.kommentar.length} &#128172; {product.likes} &#9825;</Card.Text>
+                            <Card.Text>{product.kommentar.length} <span role="img" aria-label="comment-icon">&#128172;</span> {product.likes} <span>&#9825;</span></Card.Text>
                             
                             <Card.Title>{product.titel}</Card.Title>
                             
@@ -47,7 +47,7 @@ function Products() {
                         <Card.Body>
                             <Card.Img variant="top" src={"http://localhost:5033/images/" + product.image} className="img-height-card"/>
                             
-                            <Card.Text>{product.kommentar.length} &#128172; {product.likes} &#9825;</Card.Text>
+                            <Card.Text>{product.kommentar.length} <span role="img" aria-label="comment-icon">&#128172;</span> {product.likes} <span>&#9825;</span></Card.Text>
                             
                             <Card.Title>{product.titel}</Card.Title>
                             

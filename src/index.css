@@ -1,16 +1,12 @@
 :root{
-  --bg-color-lightest-gray: #CCCCCC;
-  --bg-color-light-gray: #898989;
-  --bg-color-dark-gray: #333333;
-  --bg-color-darkest-gray: #252525;
-  --bg-color-dark-blue: #617685;
-  --bg-color-blue: #6C8EA9;
-  --txt-color-black: #000000;
-  --txt-color-darkest-gray: #252525;
-  --txt-color-dark-gray: #333333;
-  --txt-color-light-gray: #898989;
-  --txt-color-lightest-gray: #CCCCCC;
-  --txt-color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-darkest-gray: #252525;
+  --color-dark-gray: #333333;
+  --color-light-gray: #898989;
+  --color-lightest-gray: #CCCCCC;
+  --color-dark-blue: #617685;
+  --color-blue: #6C8EA9;
+  --color-white: #FFFFFF;
   --center-txt: center;
   --right-txt: right;
   --left-txt: left;
@@ -19,14 +15,27 @@
   --border-radius-none: none;
   --border-radius-circle: 50%;
   --outline-black: 1px solid #000000;
+  --outline-darkest-gray: 1px solid #252525;
+  --outline-dark-gray: 1px solid #333333;
   --outline-light-gray: 1px solid #898989;
+  --outline-lightest-gray: 1px solid #CCCCCC;
+  --outline-dark-blue: 1px solid #617685;
+  --outline-blue: 1px solid #6C8EA9;
   --center-object: auto;
   --img-width-auto: auto;
   --txt-small: 12px;
   --section-padding-top: 50px;
   --section-padding-bottom: 70px;
   --button-margin-left: 8px; 
-  --button-margin-right: 8px; 
+  --button-margin-right: 8px;
+  --position-relative: relative; 
+  --position-absolute: absolute;
+  --link-padding: 8px 10px; 
+  --footer-padding: 15px 0px; 
+}
+
+a{
+  text-decoration: var(--txt-decoration-none) !important;
 }
 
 .card-body{
@@ -47,7 +56,7 @@
 
 p{
   font-size: var(--txt-small);
-  color: var(--txt-color-light-gray);
+  color: var(--color-light-gray);
 }
 
 .product-txt-overflow{
@@ -59,24 +68,28 @@ p{
 /* HEADER */
 
 header{
-  background-color: var(--bg-color-blue);
+  background-color: var(--color-blue);
 }
 
-header nav div div{
+header nav div{
   margin: var(--center-object);
 }
 
 header nav div h2{
-  color: var(--txt-color-white);
+  color: var(--color-white);
+}
+
+header .nav-item{
+  margin-right: var(--button-margin-right);
+  margin-left: var(--button-margin-left);
 }
 
 header a{
-  color: var(--txt-color-white);
+  color: var(--color-white);
 }
 
 header a:hover{
-  color: var(--txt-color-lightest-gray);
-  text-decoration: var(--txt-decoration-none);
+  color: var(--color-lightest-gray);
 }
 
 /* LOGIN */
@@ -91,18 +104,34 @@ header a:hover{
   margin-left: var(--button-margin-left);
 }
 
-/* PATCH PROFILE */
+/* MY PROFILE */
 
-#IdPatchProfile{
+#IdMyProfile{
   padding-top: var(--section-padding-top);
   padding-bottom: var(--section-padding-bottom);
 }
+
+#IdMyProfile a{
+  margin-right: var(--button-margin-right);
+  background-color: var(--color-blue);
+  color: var(--color-white);
+  padding: var(--link-padding);
+}
+
+#IdMyProfile a:hover{
+  margin-right: var(--button-margin-right);
+  background-color: var(--color-dark-blue);
+  color: var(--color-white);
+  padding: var(--link-padding);
+}
+
+/* PATCH PROFILE */
 
 #IdPatchProfile button{
   margin-right: var(--button-margin-right);
 }
 
-/* PATCH PROFILE */
+/* DELETE PROFILE */
 
 #IdDeleteProfile{
   padding-top: var(--section-padding-top);
@@ -143,15 +172,15 @@ header a:hover{
 /* CAROUSEL */
 
 #IdCarousel{
-  position: relative;
+  position: var(--position-relative);
 }
 
 #IdCarousel p{
-  position: absolute;
+  position: var(--position-absolute);
   top: 45%;
   width: 100%;
   text-align: var(--center-txt);
-  color: var(--txt-color-white);
+  color: var(--color-white);
   z-index: 10;
   font-size: 45px;
 }
@@ -183,16 +212,16 @@ header a:hover{
 }
 
 #IdNewsLetter h4{
-  color: var(--txt-color-white);
+  color: var(--color-white);
 }
 
 #IdNewsLetter p{
-  color: var(--txt-color-white);
+  color: var(--color-white);
 }
 
 #IdNewsLetter button{
   border-radius: var(--border-radius-none);
-  background-color: var(--bg-color-dark-blue);
+  background-color: var(--color-dark-blue);
   background-position: center;
 
 }
@@ -214,14 +243,13 @@ header a:hover{
 }
 
 #IdMostRecent a{
-  color: var(--txt-color-black);
+  color: var(--color-black);
   outline: var(--outline-black);
 }
 
 #IdMostRecent a:hover{
-  color: var(--txt-color-light-gray);
+  color: var(--color-light-gray);
   outline: var(--outline-light-gray);
-  text-decoration: var(--txt-decoration-none);
 }
 
 /* PRODUCTS */
@@ -242,14 +270,13 @@ header a:hover{
 }
 
 #IdProducts a{
-  color: var(--txt-color-black);
+  color: var(--color-black);
   outline: var(--outline-black);
 }
 
 #IdProducts a:hover{
-  color: var(--txt-color-light-gray);
+  color: var(--color-light-gray);
   outline: var(--outline-light-gray);
-  text-decoration: var(--txt-decoration-none);
 }
 
 /* THE PRODUCT */
@@ -262,7 +289,6 @@ header a:hover{
 #IdTheProduct img{
   width: var(--img-width-auto);
 }
-
 
 /* KONTACT */
 
@@ -282,49 +308,77 @@ header a:hover{
 
 #IdKontact button{
   border-radius: var(--border-radius-none);
-  background-color: var(--bg-color-dark-blue);
+  background-color: var(--color-dark-blue);
+}
+
+/* SEARCH RESULTS */
+
+#IdSearchResult{
+  padding-top: var(--section-padding-top);
+  padding-bottom: var(--section-padding-bottom);
+  text-align: var(--center-txt);
+}
+
+#IdSearchResult .card{
+  border: var(--border-none);
+}
+
+#IdSearchResult a{
+  color: var(--color-black);
+  outline: var(--outline-black);
 }
 
 /* FOOTER */
 footer{
   text-align: var(--center-txt);
-  position: relative;
+  position: var(--position-relative);
+}
+
+#IdSearch{
+  width: 100%;
+}
+
+#IdSearch form{
+  position: var(--position-absolute);
+  bottom: 85px;
+  right: 0;
 }
 
 #IdToTopBtn{
-  background-color: var(--bg-color-lightest-gray);
-  color: var(--txt-color-darkest-gray);
+  background-color: var(--color-lightest-gray);
+  color: var(--color-darkest-gray);
   padding: 6px 12px;
   border-radius: 55px;
   font-size: 20px;
 }
 
 #IdToTopBtn:hover{
-  text-decoration: var(--txt-decoration-none);
-  background-color: var(--bg-color-darkest-gray);
-  color: var(--txt-color-lightest-gray);
+  background-color: var(--color-darkest-gray);
+  color: var(--color-lightest-gray);
 }
 
 footer h4{
-  color: var(--txt-color-white);
+  color: var(--color-white);
 }
 
 #IdCopyright{
-  background-color: var(--bg-color-darkest-gray);
+  background-color: var(--color-darkest-gray);
+  padding: var(--footer-padding);
 }
 
 #IdCopyright p{
-  color: var(--txt-color-light-gray);
+  color: var(--color-light-gray);
   margin: var(--center-object);
   font-size: var(--txt-small);
 }
 
 #IdSignOff{
-  background-color: var(--bg-color-dark-gray);
+  background-color: var(--color-dark-gray);
+  padding: var(--footer-padding);
 }
 
 #IdSignOff p{
-  color: var(--txt-color-light-gray);
+  color: var(--color-light-gray);
   margin: var(--center-object);
   font-size: var(--txt-small);
 }

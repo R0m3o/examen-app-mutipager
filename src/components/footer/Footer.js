@@ -2,6 +2,7 @@ import React from 'react';
 import Copyright from './Copyright';
 import SignOff from './SignOff';
 import $ from 'jquery';
+import Search from './Search';
 
 function Footer() {
     $(document).ready(function(){
@@ -22,6 +23,7 @@ function Footer() {
     return(
         <footer>
             <a href="#IdTopOfPage" id="IdToTopBtn"><b>^</b></a>
+            <Search/>
             <SignOff/>
             <Copyright/>
         </footer>

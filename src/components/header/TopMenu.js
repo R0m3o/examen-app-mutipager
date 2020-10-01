@@ -26,15 +26,11 @@ function TopMenu() {
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav>
                     <Nav.Item>
-                        <Nav.Link>
-                            <Link to='/'>FORSIDE</Link>
-                        </Nav.Link>
+                        <Link to='/'>FORSIDE</Link>
                     </Nav.Item>
 
                     <Nav.Item>
-                        <Nav.Link>
-                            <Link to='/products'>PRODUKTER</Link>
-                        </Nav.Link>
+                        <Link to='/products'>PRODUKTER</Link>
                     </Nav.Item>
 
                     <Nav.Item>
@@ -42,15 +38,11 @@ function TopMenu() {
                     </Nav.Item>
 
                     <Nav.Item>
-                        <Nav.Link>
-                            <Link to='/kontact'>KONTAKT</Link>
-                        </Nav.Link>
+                        <Link to='/kontact'>KONTAKT</Link>
                     </Nav.Item>
 
                     <Nav.Item>
-                        <Nav.Link>
-                            {logInLogout}
-                        </Nav.Link>
+                        {logInLogout}
                     </Nav.Item>
                 </Nav>
             </Navbar.Collapse>
