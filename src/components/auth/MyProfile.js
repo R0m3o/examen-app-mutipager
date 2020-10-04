@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import MyProducts from './MyProducts';
+import NewProduct from './NewProduct';
 import PatchProfile from './PatchProfile';
 
 function MyProfile() {
@@ -15,6 +17,8 @@ function MyProfile() {
                             
                             <Link to='/logout'>LOG UD</Link>
                         </div>
+                        <NewProduct/>
+                        <MyProducts/>
                     </div>
                 </div>
             </div>

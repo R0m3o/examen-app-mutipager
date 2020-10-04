@@ -10,16 +10,16 @@ function DeleteProfile() {
     useEffect(() => {
         (async () => {
             try {
-                let res = await axios.get('http://localhost:5033/bruger/admin/' + document.cookie);
+                let res = await axios.get('http://localhost:5033/bruger/admin/' + sessionStorage.userID);
                 setProfile(await res.data);
             } catch (err) {
                 console.log(err)
             }
         })()
-    }, [])
+    }, [sessionStorage.userID])
 
     const deleteProfile = e => {
-        axios.delete('http://localhost:5033/bruger/admin/' + document.cookie)
+        axios.delete('http://localhost:5033/bruger/admin/' + sessionStorage.userID)
             .then(res => {
                 console.log(res.data);
                 history.push('/');

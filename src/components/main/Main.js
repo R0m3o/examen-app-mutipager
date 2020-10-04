@@ -10,8 +10,9 @@ import Product from './Product';
 import NewUser from '../auth/NewUser';
 import MyProfile from '../auth/MyProfile';
 import DeleteProfile from '../auth/DeleteProfile';
-import PatchProfile from '../auth/PatchProfile';
 import SearchResult from './SearchResult';
+import DeleteProduct from '../auth/DeleteProduct';
+import PatchProduct from '../auth/PatchProduct';
 
 const PrivateRoute = ({ component, ...options }) => {
     const { loggedIn } = useContext(LoginContext);
@@ -30,8 +31,9 @@ function Main() {
             <Route exact path='/login' component={Login}/>
             <Route exact path='/sign-up' component={NewUser}/>
             <PrivateRoute exact path='/my-profile' component={MyProfile}/>
-            <PrivateRoute exact path='/patch-profile' component={PatchProfile}/>
             <PrivateRoute exact path='/delete-profile' component={DeleteProfile}/>
+            <PrivateRoute exact path='/delete-product/:id' component={DeleteProduct}/>
+            <PrivateRoute exact path='/patch-product/:id' component={PatchProduct}/>
             <PrivateRoute exact path='/logout' component={LogOut}/>
             <Route exact path='/product/:id' component={Product}/>
             <Route exact path='/search-result/:searchword' component={SearchResult}/>

@@ -12,7 +12,7 @@ function SearchResult(props) {
                 const response = res.data;
                 setResults(response);
             })
-    }, [])
+    }, [props.match.params.searchword])
 
     let listOfResults = "";
     let anyResults = "";

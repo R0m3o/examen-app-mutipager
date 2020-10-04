@@ -11,10 +11,7 @@ function LogOut() {
     const handleLogout = () => {
         axios.get('http://localhost:5033/login/logout')
             .then(data => {
-                var d = new Date();
-                d.setTime(d.getTime() - (3*60*60*1000));
-                var expires = "expires=" + d.toUTCString();
-                document.cookie = (document.cookie + "; " + expires)
+                sessionStorage.removeItem("userID")
                 
                 onLogout();
                 history.push('/');

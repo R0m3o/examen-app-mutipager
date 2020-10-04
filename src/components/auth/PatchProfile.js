@@ -11,7 +11,7 @@ const PatchProfile = () => {
     useEffect(() => {
         async function getProfile() {
             try {
-                let res = await axios.get('http://localhost:5033/bruger/admin/' + document.cookie);
+                let res = await axios.get('http://localhost:5033/bruger/admin/' + sessionStorage.userID);
                 let profileRes = await res.data;
 
                 setProfile({ brugernavn: profileRes.brugernavn, fornavn: profileRes.fornavn, efternavn: profileRes.efternavn, email: profileRes.email, password: profileRes.password})
@@ -21,12 +21,12 @@ const PatchProfile = () => {
         }
 
         getProfile();
-    }, [])
+    }, [sessionStorage.userID])
 
     const editProfile = (e) => {
         e.preventDefault();
 
-        axios.put('http://localhost:5033/bruger/admin/' + document.cookie, profile, {withCredentials: true})
+        axios.put('http://localhost:5033/bruger/admin/' + sessionStorage.userID, profile, {withCredentials: true})
             .then(res => {
                 console.log(res.data);
                 history.push('/');
